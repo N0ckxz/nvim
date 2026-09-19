@@ -36,6 +36,7 @@ return {
         -- LSPs
         "clangd", -- C / C++
         "rust-analyzer", -- Rust
+        "glslls", -- GLSL Language Server for shader completion/errors
         "pyright", -- Python
 
         -- Formatters & Linters
@@ -77,6 +78,43 @@ return {
     -- end
   },
 
+  -- Quick toggleable terminal for running CMake & Binaries
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    keys = {
+      { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
+    },
+    opts = {
+      direction = "float",
+      open_mapping = [[<c-\>]],
+    },
+  },
+
+  -- Debuging for OpenGl/C++
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+    },
+    config = function()
+      local dap = require "dap"
+      local dapui = require "dapui"
+      dapui.setup()
+
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminate["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end,
+  },
+
   -- Syntax Highlighting
   {
     "nvim-treesitter/nvim-treesitter",
@@ -89,6 +127,7 @@ return {
         "css",
         "c",
         "cpp",
+        "glsl",
         "rust",
         "python",
       },

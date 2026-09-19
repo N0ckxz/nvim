@@ -1,7 +1,7 @@
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- Default servers (Pyright)
-local default_servers = { "pyright" }
+local default_servers = { "pyright", "glslls" }
 
 for _, lsp in ipairs(default_servers) do
   vim.lsp.config(lsp, {
@@ -27,6 +27,7 @@ vim.lsp.config("clangd", {
     "--fallback-style=llvm",
   },
 })
+
 vim.lsp.enable "clangd"
 
 -- Rust configurarion
