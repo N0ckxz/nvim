@@ -6,12 +6,13 @@
 local M = {}
 
 M.base46 = {
-  theme = "bearded-arc",
+  theme = "ayu_dark",
+  transparency = false,
 
-  -- hl_override = {
-  Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+  },
 }
 
 local header_art = [[
@@ -37,7 +38,10 @@ M.nvdash = {
 }
 
 M.ui = {
-  transparency = true,
+  transparency = false,
+  statusline = {
+    theme = "minimal",
+  },
   tabufline = {
     lazyload = false,
   },
