@@ -6,6 +6,21 @@ return {
     opts = require "configs.conform",
   },
 
+  -- Marks.nvim
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
+  -- -- nvim-ufo; for folding the code
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   dependencies = {
+  --     { "kevinhwang91/promise-async" },
+  --   },
+  -- },
+
   -- LSP configuration
   {
     "neovim/nvim-lspconfig",
